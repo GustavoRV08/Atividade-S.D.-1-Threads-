@@ -8,8 +8,13 @@ class RacerRunnable implements Runnable{
     }
 
     public void run(){
-        while(true){
-            System.out.println("Racer " + id + "-Imprimindo");
+        try{
+            while(true){
+                System.out.println("Racer " + id + "-Imprimindo");
+                Thread.sleep(100);
+            }
+        }catch(InterruptedException e){
+            System.out.println("Erro!");
         }
     }
 

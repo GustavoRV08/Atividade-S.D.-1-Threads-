@@ -1,29 +1,28 @@
-package q2;
+package q3;
 
-public class Consumidor extends Thread{
+public class Produtor extends Thread{
     Thread th;
     Deposito deposito;
     int tempo;
-    public Consumidor(Deposito dep, int t){
+    public Produtor(Deposito dep, int t){
         deposito = dep;
         tempo = t;
     }
-
     public void run(){
         try{
-            for(int i = 0; i<20; i++){
-                deposito.retirar();
+            for(int i = 0; i<100; i++){
+                deposito.colocar();
                 Thread.sleep(tempo);
+                System.out.println("Deposito atual: " + deposito.getNumItens());
             }
         }catch(InterruptedException e){
             System.out.println("ERRO!");
         }
-        System.out.println("Estoque atual: " + deposito.getNumItens());
     }
 
     public void start(){
         if(th == null){
-            th = new Thread(this, "consumidor");
+            th = new Thread(this, "produtor");
             th.start();
         }
     }

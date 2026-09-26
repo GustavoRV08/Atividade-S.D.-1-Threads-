@@ -1,7 +1,7 @@
 package q1;
 
 public class RaceThreads {
-    public static void race() {
+    public static void main(String[] args) {
         RacerThreads[] corredores;
         corredores = new RacerThreads[10];
         for (int i = 0; i < 10; i++) {

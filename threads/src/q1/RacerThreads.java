@@ -12,10 +12,10 @@ class RacerThreads extends Thread{
         try{
             while(true){
                 System.out.println("Racer " + id + "-Imprimindo");
-                //Thread.sleep(100);
+                Thread.sleep(100);
                 this.setPriority(10);
             }
-        }catch(Exception e /*InterruptedException e*/){
+        }catch(Interrupted Exception e){
             System.out.println("Erro!");
         }
     }

@@ -10,22 +10,23 @@ class RacerRunnable implements Runnable{
     }
 
     public void run(){
-        try{
-            while(true){
-                System.out.println("Racer " + id + "-Imprimindo");
-                //Thread.sleep(100);
-                t.setPriority(10);
-            }
-        }catch(Exception e /*InterruptedException e*/){
-            System.out.println("Erro!");
+        for(int i = 0; i<1000; i++){
+            System.out.println("Racer " + id + "-Imprimindo");
         }
     }
 
     public void start(){
-        System.out.println("Iniciando racer " + id);
         if(t == null){
             t = new Thread (this, id);
-            t.start();
+            try{
+                System.out.println("Iniciando racer " + id);
+                t.start();
+                if(Integer.parseInt(id)%2 == 0){
+                    t.join();
+                }
+            }catch(InterruptedException e){
+                System.out.println("ERRO!");
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package q2;
+package q3;
 
 public class Consumidor extends Thread{
     Thread th;
@@ -12,7 +12,9 @@ public class Consumidor extends Thread{
     public void run(){
         try{
             for(int i = 0; i<20; i++){
-                deposito.retirar();
+                while(!deposito.retirar()){
+                    Thread.sleep(200);
+                }
                 Thread.sleep(tempo);
             }
         }catch(InterruptedException e){
